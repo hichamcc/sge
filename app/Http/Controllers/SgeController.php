@@ -50,6 +50,7 @@ class SgeController extends Controller
                     'Commissioning & Turnover',
                 ],
                 'icon' => 'building',
+                'badge' => 'Fully Licensed and Insured Alberta Home Builder',
             ],
             [
                 'title' => 'Civil Construction',
@@ -91,7 +92,7 @@ class SgeController extends Controller
             ['name' => 'First Nation Communities', 'description' => 'Long-standing partnerships delivering critical water, wastewater, and building infrastructure within Indigenous communities.'],
             ['name' => 'Municipal', 'description' => 'Water and sewer infrastructure, utility repairs, and essential service upgrades for municipal clients across Alberta.'],
             ['name' => 'Mining & Industrial', 'description' => 'Heavy civil, underground concrete, and process infrastructure for mining operations and industrial facilities.'],
-            ['name' => 'Oil & Gas', 'description' => 'High-risk utility works, design-build water main extensions, and site infrastructure in demanding energy sector environments.'],
+            ['name' => 'Private', 'description' => 'As a licensed Alberta homebuilder, we specialize in private acreage development with a primary focus on the design and certified installation of compliant private wastewater systems.'],
             ['name' => 'Institutional', 'description' => 'General construction within active community environments including learning centres, schools, and public facilities.'],
             ['name' => 'Emergency Response', 'description' => 'Large-scale flood mitigation, wildfire recovery, and infrastructure restoration programs managing 150+ personnel.'],
         ];
@@ -107,38 +108,39 @@ class SgeController extends Controller
             ],
             [
                 'name' => 'Eden Valley Head Start Early Learning Center',
-                'scope' => 'Water & Wastewater',
+                'scope' => 'Institutional',
                 'detail' => 'Sensibly Green Enterprises Ltd. served as General Contractor for the Eden Valley Head Start Early Learning Center, partnering with A&E Architectural and Engineering Group of Edmonton, Alberta. The project reflects our purpose of delivering sustainable, high-performance construction that creates lasting value for the communities we serve.',
                 'image' => 'https://images.unsplash.com/photo-1621905252507-b35492cc74b4?q=80&w=800&auto=format&fit=crop',
-                'highlight' => '10+ Years of Experience',
+                'highlight' => 'Architectural Compliance Excellence',
             ],
             [
-                'name' => 'Morley Well & Cistern Replacements',
-                'scope' => 'Civil Infrastructure',
-                'detail' => 'Critical water infrastructure execution including large-scale civil works and underground services for Bearspaw First Nation (2023-2024).',
-                'image' => 'https://images.unsplash.com/photo-1590069261209-f8e9b8642343?q=80&w=800&auto=format&fit=crop',
-                'highlight' => '',
+                'name' => 'Alberta Government Private Wastewater',
+                'scope' => 'Private Wastewater',
+                'detail' => 'Delivered a province-led infrastructure program for the Government of Alberta involving the coordinated replacement of more than 80 private residential wastewater systems. The project required disciplined scheduling, regulatory compliance, and consistent quality control across multiple sites to ensure reliable, long-term environmental performance.',
+                // TODO: Replace with actual image — pressurized wastewater mound / effluent sprinkler system photo
+                'image' => 'https://uploads-ssl.webflow.com/65f1ea82feb722e656f827f1/66a123e3d0729a10809ac344_Septic%20Mound%20Installation.png',
+                'highlight' => '80+ Private Wastewater Systems',
             ],
             [
                 'name' => 'Alberta Government – Flood Mitigation',
                 'scope' => 'Emergency Response',
                 'detail' => 'Our team was the sole private contractor selected by the Alberta Government for a large-scale flood recovery project. Our team managed over 150 personnel and handled more than $8M in project revenue.',
                 'image' => 'https://images.unsplash.com/photo-1545259741-2ea3ebf61fa3?q=80&w=800&auto=format&fit=crop',
-                'highlight' => '$8M+ Revenue',
+                'highlight' => '$8M+ Workforce Revenue',
             ],
             [
                 'name' => 'Village of Cremona – Municipal Services',
                 'scope' => 'Municipal Water & Sewer',
-                'detail' => 'Since 2015, we’ve provided ongoing municipal water and sewer repairs, system maintenance, and key infrastructure upgrades to support the community’s essential services.',
+                'detail' => 'Since 2015, we\'ve provided ongoing municipal water and sewer repairs, system maintenance, and key infrastructure upgrades to support the community\'s essential services.',
                 'image' => 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=800&auto=format&fit=crop',
-                'highlight' => 'Serving Since 2015',
+                'highlight' => 'Critical Utility Restoration',
             ],
             [
                 'name' => 'Slave Lake – Wildfire Recovery',
                 'scope' => 'Emergency Response & Industrial',
-                'detail' => 'Led fire mitigation and industrial redevelopment, including a five-acre site buildout and structural projects.',
+                'detail' => 'Led fire mitigation and industrial redevelopment, including an 18,000 sq. ft. industrial building, multi-residential home rebuilds, community connections, and disaster relief across a five-acre site.',
                 'image' => 'https://www.theglobeandmail.com/resizer/v2/2UFDNI3A45CLBGNHIXNTWES7UA?auth=f9f4955ed0bbd1c776f46d721d7d2fa039acb369503c7c98ef1708749156790b&width=900&height=900&quality=80&smart=true',
-                'highlight' => 'Multi-residential Home Rebuilds',
+                'highlight' => '18,000 sq. ft. Industrial Building',
             ],
             [
                 'name' => 'TransCanada – Turbine Project',
@@ -150,9 +152,18 @@ class SgeController extends Controller
             [
                 'name' => 'Municipal Water Main Extensions',
                 'scope' => 'Civil & Water',
-                'detail' => 'With over 14 years of experience, we’ve completed multi-kilometer design-build water main extensions across municipal, industrial, and oil & gas sectors.',
-                'image' => 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=800&auto=format&fit=crop',
-                'highlight' => '14 Years of Experience',
+                'detail' => 'With over 15 years of experience, we\'ve completed multi-kilometer design-build water main extensions across municipal, industrial, and oil & gas sectors.',
+                // TODO: Replace with actual image — underground waterline being installed
+                'image' => 'https://www.bfplumbingmd.com/wp-content/uploads/2022/08/underground-water-pipe-1024x683.jpg',
+                'highlight' => '15 Years of Experience',
+            ],
+            [
+                'name' => 'Morley Well & Cistern Replacements',
+                'scope' => 'Critical Infrastructure',
+                'detail' => 'Critical water infrastructure execution including large-scale civil works and underground services for Bearspaw First Nation.',
+                // TODO: Replace with actual image — underground concrete tank
+                'image' => 'https://4.imimg.com/data4/PF/WT/MY-17644858/under-ground-water-tank.jpg',
+                'highlight' => 'Water Access Initiative',
             ],
         ];
 
@@ -162,7 +173,7 @@ class SgeController extends Controller
                 'name' => 'Colin Gustafson',
                 'title' => 'Principal & CEO',
                 'experience' => '28 years',
-                'description' => 'Executive oversight and risk mitigation leadership across civil, underground, concrete, and site infrastructure. Built substantial in-house capacity with owned equipment and crews capable of completing 95% of project scopes internally.',
+                'description' => 'Executive oversight and risk mitigation leadership across civil, underground, concrete, and site infrastructure. Ensures constructability, safety performance, schedule certainty, and timely resolution of complex field conditions in alignment with design intent. His background spans residential, institutional, commercial, industrial, civil, oil & gas, and water/wastewater infrastructure, providing a broad and practical foundation for managing complex, multi-scope projects. Raised in a business environment and supported by three decades of hands-on financial management and operational oversight—grounded in formal studies in business management, accounting, and finance—he brings a disciplined understanding of fiscal stewardship, organizational structure, and sustainable growth. This depth of experience supports sound decision-making across financial planning, internal controls, and team development, reinforcing stability, accountability, and long-term performance throughout the organization.',
             ],
             [
                 'name' => 'Brandon Clague',

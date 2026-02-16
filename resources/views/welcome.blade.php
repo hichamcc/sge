@@ -269,6 +269,9 @@
                     </div>
 
                     <h3 class="font-serif text-2xl text-sg-ink group-hover:text-white mb-4 transition-colors">{{ $service['title'] }}</h3>
+                    @if(isset($service['badge']))
+                    <p class="text-sg-gold text-xs font-semibold tracking-wider uppercase mb-4 group-hover:text-sg-gold-light transition-colors">{{ $service['badge'] }}</p>
+                    @endif
                     <p class="text-sg-muted group-hover:text-white/60 text-sm leading-relaxed mb-8 transition-colors">{{ $service['description'] }}</p>
 
                     <ul class="space-y-2.5">
