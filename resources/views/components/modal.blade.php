@@ -4,7 +4,7 @@
     'closable' => true,
 ])
 
-<dialog id="{{ $id }}" {{ $attributes->merge([
+<dialog class="w-lg" id="{{ $id }}" {{ $attributes->merge([
     'x-init' => $open ? '$el.showModal()' : '',
     'x-on:modal:open.document' => "\$event.detail == '{$id}' && \$el.showModal()",
 ]) }}>

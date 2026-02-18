@@ -10,6 +10,8 @@
             </span>
         </div>
 
+        <x-action-message on="contact-deleted">{{ __('Submission deleted.') }}</x-action-message>
+
         <div class="overflow-hidden rounded-xl border border-gray-200 dark:border-gray-700">
             <div class="overflow-x-auto">
                 <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
@@ -22,6 +24,7 @@
                             <th scope="col" class="px-6 py-3 text-left text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">Subject</th>
                             <th scope="col" class="px-6 py-3 text-left text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">Message</th>
                             <th scope="col" class="px-6 py-3 text-left text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">Date</th>
+                            <th scope="col" class="px-6 py-3 text-right text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">Actions</th>
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-gray-200 bg-white dark:divide-gray-700 dark:bg-gray-900">
@@ -42,17 +45,59 @@
                                         <span class="text-gray-400 dark:text-gray-500">—</span>
                                     @endif
                                 </td>
-                                <td class="max-w-xs truncate px-6 py-4 text-sm text-gray-500 dark:text-gray-400" title="{{ $contact->message }}">
-                                    {{ Str::limit($contact->message, 80) }}
+                                <td class="px-6 py-4 text-sm text-gray-500 dark:text-gray-400">
+                                    <div class="max-w-md whitespace-pre-line">{{ $contact->message }}</div>
                                 </td>
                                 <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-400 dark:text-gray-500">
                                     {{ $contact->created_at->format('M d, Y') }}<br>
                                     <span class="text-xs">{{ $contact->created_at->format('g:i A') }}</span>
                                 </td>
+                                <td class="whitespace-nowrap px-6 py-4 text-right text-sm space-x-2">
+                                    <x-button variant="secondary" size="sm" type="button" x-data="" x-on:click="$dispatch('modal:open', 'view-contact-{{ $contact->id }}')">{{ __('View') }}</x-button>
+                                    <x-form method="delete" action="{{ route('contacts.destroy', $contact) }}" class="inline" x-data="" x-on:submit.prevent="if(confirm('Delete this submission?')) $el.submit()">
+                                        <x-button variant="danger" size="sm">{{ __('Delete') }}</x-button>
+                                    </x-form>
+                                </td>
                             </tr>
+
+                            <x-modal id="view-contact-{{ $contact->id }}">
+                                <div class="p-6 max-w-lg">
+                                    <x-heading size="lg">{{ __('Contact Submission') }}</x-heading>
+                                    <div class="mt-4 space-y-4">
+                                        <div>
+                                            <span class="text-xs font-semibold uppercase text-gray-500 dark:text-gray-400">Name</span>
+                                            <p class="text-sm text-gray-900 dark:text-white">{{ $contact->name }}</p>
+                                        </div>
+                                        <div>
+                                            <span class="text-xs font-semibold uppercase text-gray-500 dark:text-gray-400">Email</span>
+                                            <p class="text-sm"><a href="mailto:{{ $contact->email }}" class="text-blue-600 dark:text-blue-400 hover:underline">{{ $contact->email }}</a></p>
+                                        </div>
+                                        @if($contact->organization)
+                                        <div>
+                                            <span class="text-xs font-semibold uppercase text-gray-500 dark:text-gray-400">Organization</span>
+                                            <p class="text-sm text-gray-900 dark:text-white">{{ $contact->organization }}</p>
+                                        </div>
+                                        @endif
+                                        @if($contact->subject)
+                                        <div>
+                                            <span class="text-xs font-semibold uppercase text-gray-500 dark:text-gray-400">Subject</span>
+                                            <p class="text-sm text-gray-900 dark:text-white">{{ ucfirst(str_replace('-', ' ', $contact->subject)) }}</p>
+                                        </div>
+                                        @endif
+                                        <div>
+                                            <span class="text-xs font-semibold uppercase text-gray-500 dark:text-gray-400">Message</span>
+                                            <p class="text-sm text-gray-900 dark:text-white whitespace-pre-line">{{ $contact->message }}</p>
+                                        </div>
+                                        <div>
+                                            <span class="text-xs font-semibold uppercase text-gray-500 dark:text-gray-400">Received</span>
+                                            <p class="text-sm text-gray-500 dark:text-gray-400">{{ $contact->created_at->format('M d, Y \a\t g:i A') }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </x-modal>
                         @empty
                             <tr>
-                                <td colspan="7" class="px-6 py-12 text-center">
+                                <td colspan="8" class="px-6 py-12 text-center">
                                     <div class="flex flex-col items-center">
                                         <svg class="w-12 h-12 text-gray-300 dark:text-gray-600 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>

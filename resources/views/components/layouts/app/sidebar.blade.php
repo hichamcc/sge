@@ -21,6 +21,9 @@
                     <x-navlist.item before="phosphor-envelope-simple" :href="route('contacts.index')" :current="request()->routeIs('contacts.*')">
                         {{ __('Contact Submissions') }}
                     </x-navlist.item>
+                    <x-navlist.item before="phosphor-note-pencil" :href="route('cms.company')" :current="request()->is('cms/*')">
+                        {{ __('Site Content') }}
+                    </x-navlist.item>
                 </x-navlist.group>
             </x-navlist>
 
