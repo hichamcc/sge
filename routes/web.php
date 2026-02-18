@@ -14,9 +14,18 @@ Route::get('/', [SgeController::class, 'index'])->name('home');
 Route::post('/sge/contact', [SgeController::class, 'contact'])->name('sge.contact');
 
 
-Route::view('dashboard', 'dashboard')
-    ->middleware(['auth', 'verified'])
-    ->name('dashboard');
+Route::get('dashboard', function () {
+    return view('dashboard', [
+        'contactsCount' => \App\Models\Contact::count(),
+        'contactsThisWeek' => \App\Models\Contact::where('created_at', '>=', now()->subWeek())->count(),
+        'recentContacts' => \App\Models\Contact::latest()->take(5)->get(),
+        'statsCount' => \App\Models\Stat::count(),
+        'servicesCount' => \App\Models\Service::count(),
+        'projectsCount' => \App\Models\Project::count(),
+        'sectorsCount' => \App\Models\Sector::count(),
+        'leadersCount' => \App\Models\Leader::count(),
+    ]);
+})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware(['auth'])->group(function () {
     Route::get('contacts', [SgeController::class, 'contacts'])->name('contacts.index');
